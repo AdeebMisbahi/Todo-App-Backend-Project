@@ -1,0 +1,197 @@
+:root {
+	/* colors */
+	--input-bg: #181a1a;
+	--text: #ffdfdb;;
+    --input-color:#a1a1a1;
+	--border-color: #200648;
+	--input-bg-hover: #000;
+	--btn-color: #fff;
+	--shadow1: #444445;
+	--shadow2: #2e2e2e;
+   
+}
+/* container 1  is for filling detail in the component of form  */
+#container-1{
+    padding: 0px 10px;
+    min-width: 400px;
+    max-width:500px;
+    margin: 0 auto;
+    position: relative;
+    /* border: 2px solid red; */
+}
+#container-1 form{
+    display: flex;
+    flex-direction: row;
+  
+}
+/* this is common flex box */
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+#container-1 .flex-column{
+    flex: 1;
+}
+/* this is common flex box */
+.flex-row{
+     display: flex;
+     flex-direction: row;
+}
+#option,
+#taskDate{
+    flex: 50%;
+}
+/* styling form inner Tag like input, option and button */
+#container-1 input,
+#container-1 select,
+#container-1 button
+{
+     border: none;
+     outline: none;
+     padding: 10px;
+     background:var(--input-bg);
+     margin-bottom: 10px;
+     color: var(--input-color);
+     transition:box-shadow 200ms ease, background-color 200ms ease-in-out;
+     &:focus {
+		
+			scale: 1.04;
+			transition: 1ms;
+
+			border-left: 3px solid #49149a;
+			border-right: 3px solid #49149a;
+		
+	}
+	&:hover {
+		background-color:var(--input-bg-hover);
+        box-shadow: #fff8 0 0 10px;
+        color: #fff;
+	}
+
+}
+#container-1 input[type="text"]{
+      border-top-left-radius:10px ;
+      border-top-right-radius: 10px;
+      transition: 0.4s;
+    
+      cursor: pointer;
+      &::placeholder{
+        color: var(--input-color);
+      }
+     
+}
+#container-1 input[type="date"]{
+    border-bottom-right-radius: 10px;
+    transition: 0.4s;
+
+	cursor: pointer;
+    margin-left: 5px;
+
+}
+#container-1 select{
+    border-bottom-left-radius: 10px;
+}
+#container-1
+select option {
+    color: #fff;
+   
+    
+  }
+  #container-1 input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+
+}
+
+
+#container-1 button{
+    border-radius: 10px;
+    margin-left: 12px;
+	color: var(--btn-color);
+    border: 1px solid var(--border-color);
+    transition: 0.4s;
+	cursor: pointer; 
+}
+
+/* time to style for todolist where task stores */
+#container-2{
+    margin: 0 auto;
+     min-width: 400px;
+     max-width: 1200px;     
+}
+#container-2 ul{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+
+}
+#container-2 li{
+    padding: 10px 20px;
+    margin: 12px;
+    border-radius: 4px;
+    background-color: var(--input-bg);
+}
+.flex-1{
+    flex: 1;
+}
+
+
+/* delete icon anchor tag  */
+#container-2 a{
+    text-decoration: none;
+    color: var(--text); 
+    border-radius: 50%;
+    padding: 8px 12px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 4px 1px #2a2a2a;
+    transition:box-shadow 200ms ease, background-color 200ms ease-in-out;
+    background-color:var(--input-bg);
+    border:1px solid var(--text);
+    &:hover{
+        background-color: var(--input-bg-hover);
+        color: #fff;
+        box-shadow: #fff8 0 0 10px;
+    }
+}
+
+/* checkbox button */
+.checkbox{
+    position: relative;
+    border: none;
+    outline: none;
+    background-color: var(--input-bg);
+    border:1px solid var(--text);
+    color: var(--text); 
+    border-radius: 50%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    box-shadow: 0px 0px 4px 1px #2a2a2a;
+    transition:box-shadow 200ms ease, background-color 200ms ease-in-out;
+    &:hover{
+        background-color: var(--input-bg-hover);
+        color: #fff;
+        box-shadow: #fff8 0 0 10px;
+
+    }
+}
+.checked{
+    text-decoration: line-through;
+}
+/* task description   and task date*/
+.task-desc{
+    text-align: justify;
+    padding: 4px 5px;
+}
+
+.task-date, .task-category {
+   
+    padding: 3px 4px;
+   margin: 0px 4px;
+   margin-top: 16px;
+    
+}
+
+/* task date icon */
+.task-date i{
+    margin-right: 6px;
+}
+/* task check input box */

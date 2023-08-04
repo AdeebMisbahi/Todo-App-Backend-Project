@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="/css/home.css">
+
+<!-- container for submit form with create entry for task info in database -->
+<!-- container for all input and its label  -->
+<div id="container-1">
+    <form action="create-tasklist" method="post">
+        <div class="flex-column">
+            <input type="text" name="task" placeholder="Enter your task..." required>
+            <div class="flex-row">
+                <select name="option" id="option" required>
+                    <option value="" disabled selected>Choose a Category</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="School">School</option>
+                    <option value="Shoping">Shoping</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <input type="date" name="taskDate" id="taskDate">
+            </div>
+        </div>
+        <div class="flex-column">
+
+            <button type="submit">Add Task</button>
+            <button class="delete-completedTasks">Delete</button>
+        </div>
+
+</div>
+</form>
+<!-- container for displaying all todolist output -->
+<div id="container-2">
+    <ul class="task-list">
+        <% for(let i of task_list) {%>
+            <li class="flex-row">
+                <div class="flex-1">
+
+                    <div class="flex-column">
+
+                        <span class="task-desc">
+                            <%=i.task%>
+                        </span>
+                        <div class="flex-row">
+                            <span class="task-category">
+                                <%=i.option%>
+                            </span>
+                            <span class="task-date"><i class="fa-solid fa-calendar-days"></i>
+                                <%=i.taskDate.toLocaleDateString()%>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="flex-column">
+
+                    <input class="checkbox" type="checkbox" data-id="<%= i._id %>" <% if(i.completed) { %>checked<% } %>
+                        onchange="updateTask('<%= i._id %>')">
+                            <a href="/delete-task/?id=<%= i._id %>"><i class="fas fa-trash"></i></a>
+                </div>
+
+
+            </li>
+            <% } %>
+    </ul>
+</div>
+
+<script src="/JS/home.JS"></script>
