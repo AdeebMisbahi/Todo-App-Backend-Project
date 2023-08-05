@@ -15,20 +15,29 @@ router.get('/delete-task', deleteController.delete);
 
 
 
-router.post('/update-task/:id', async (req, res) => {
+router.put('/update-task/:id', async (req, res) => {
     const taskId = req.params.id;
    
-  
     try {
       const task = await Task.findById(taskId);
       
       task.completed = !task.completed;
       await task.save();
-  
-      res.json({ success: true });
+
+      res.status(200).json({ completed: task.completed });
     //   res.redirect('/'); // Redirect back to your task list
     } catch (error) {
       console.error(error);
+    }
+  });
+
+  
+router.post('/delete-completed', async (req, res) => {
+    try {
+      await Task.deleteMany({ completed: true });
+
+    } catch (error) {
+      res.status(500).send('Error deleting tasks.');
     }
   });
   

@@ -34,7 +34,7 @@
             <li class="flex-row">
                 <div class="flex-1">
 
-                    <div class="flex-column">
+                    <div class="flex-column <% if(i.completed){ %>completed<% } %>" id="line-throw" >
 
                         <span class="task-desc">
                             <%=i.task%>
@@ -51,10 +51,11 @@
                     </div>
                 </div>
                 <div class="flex-column">
-
-                    <input class="checkbox" type="checkbox" data-id="<%= i._id %>" <% if(i.completed) { %>checked<% } %>
-                        onchange="updateTask('<%= i._id %>')">
-                            <a href="/delete-task/?id=<%= i._id %>"><i class="fas fa-trash"></i></a>
+                   <div class="round">
+                    <input class="checkbox" type="checkbox" data-id="<%= i._id %>" <% if(i.completed) { %>checked<% } %> >
+                    <label for="checkbox"></label>
+                  </div>
+                   <a href="/delete-task/?id=<%= i._id %>"><i class="fas fa-trash"></i></a>
                 </div>
 
 
@@ -62,5 +63,55 @@
             <% } %>
     </ul>
 </div>
+<!-- script for update task -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const toggleCheckboxes = document.querySelectorAll('.checkbox');
 
+  toggleCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', async () => {
+      const taskId = checkbox.getAttribute('data-id');
+
+      try {
+        const response = await fetch(`/update-task/${taskId}`, {
+          method: 'PUT'
+        });
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data)
+          const span =document.getElementById('line-throw')
+          span.classList.toggle('completed', data.completed);
+        } else {
+          console.error('Failed to update task completion status');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  });
+});
+
+</script>
+
+<!-- script for delete all completed tasks -->
+<script>
+        document.querySelector('.delete-completedTasks').addEventListener('click', async (e) => {
+            e.preventDefault();
+      try {
+        const response = await fetch('/delete-completed', {
+          method: 'POST',
+        });
+
+        if (response.ok) {
+          // Redirect to the home page without reloading
+          window.location.href = '/';
+        } 
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+</script>
+
+
+<!-- script file for styling select options -->
 <script src="/JS/home.JS"></script>

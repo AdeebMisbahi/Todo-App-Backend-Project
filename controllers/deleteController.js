@@ -12,15 +12,3 @@ module.exports.delete=function(req, res){
      });
     
 }
-// module.exports.deleteSelected=function(req,res){
-//    const taskIds = req.body.taskIds;
-//    console.log(taskIds)
-//    Task.deleteMany({_id:{ $in: taskIds }})
-//    .then(()=>{
-//       console.log('selected task deleted');
-//       res.redirect('back');
-//    })
-//    .catch((err) => {
-//       console.log("Error while deleting selected task from db databse", err);
-//    });
-// }

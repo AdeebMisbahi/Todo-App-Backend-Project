@@ -20,5 +20,17 @@
         <%- include('_footer'); -%>
 
         <%- script %>
+        <script>
+            async function updateTask(taskId) {
+              
+            const response = await fetch(`/update-task/${taskId}`, {
+              method: 'POST'
+            });
+      
+            const data = await response.json();
+      
+          }
+          </script>
     </body>
+
 </html>

@@ -8,22 +8,22 @@ taskCategory.forEach(i=>{
     i.style.opacity='.8'
     i.style.width='80px'
 
-    if(i.innerHTML==='Personal'){
+    if(i.innerHTML.trim()==='Personal'){
         i.style.backgroundColor='#df9a17';
     }
-    else if(i.innerHTML==='Work'){
+    else if(i.innerHTML.trim()==='Work'){
         i.style.backgroundColor='#cc3020';
 
     }
-    else if(i.innerHTML==='School'){
+    else if(i.innerHTML.trim()==='School'){
         i.style.backgroundColor='#572890';
 
     }
-    else if(i.innerHTML==='Shoping'){
+    else if(i.innerHTML.trim()==='Shoping'){
         i.style.backgroundColor='#13736d';
 
     }
-    else if(i.innerHTML==='Other'){
+    else if(i.innerHTML.trim()==='Other'){
         i.style.backgroundColor='#44b81a';
 
     }
